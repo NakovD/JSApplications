@@ -1,2 +1,2 @@
-# JSApplications
-These are files from the course JS Applications in SoftUni Academy January-April 2020
+# SoftuniCourses
+SoftUniCourses started 2019
