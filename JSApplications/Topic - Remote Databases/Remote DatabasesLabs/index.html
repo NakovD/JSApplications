@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p style="display: inline;">Email</p>
+        <input type="text" id="email" placeholder="Email" />
+        <p style="display: inline;">Password</p>
+        <input type="password" id="password" placeholder="Password" />
+        <button type="button" id="btn" onclick="">Register</button>
+        <div id="error" style="color:red"></div>
+
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-analytics.js"></script>
+
+    <!-- <script defer src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script> -->
+
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDO7yPDvdZEq4BLZr53PIS76hDaR841XQI",
+            authDomain: "softunicourses.firebaseapp.com",
+            databaseURL: "https://softunicourses.firebaseio.com",
+            projectId: "softunicourses",
+            storageBucket: "softunicourses.appspot.com",
+            messagingSenderId: "389796598533",
+            appId: "1:389796598533:web:95de630cadb6bc86e99d6c",
+            measurementId: "G-VGEFEXX4GY"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+    <script>
+        let button = document.getElementById('btn');
+        button.onclick = function (e) {
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+            let errContainer = document.getElementById('error');
+            errContainer.textContent = '';
+            if (!(email && password)) {
+                errContainer.textContent = 'Username and password are required!';
+            }
+            firebase.auth().signOut()
+                .then(() => {
+                    // Sign-out successful.
+                    console.log('logged out');
+                })
+                .catch((error) => {
+                    // An error happened.
+                });
+
+
+
+            // firebase.auth().onAuthStateChanged((user) => {
+            //     if (user) {
+            //         // User is signed in.
+            //         console.log(user);
+            //         let displayName = user.displayName;
+            //         let email = user.email;
+            //         let emailVerified = user.emailVerified;
+            //         let isAnonymous = user.isAnonymous;
+            //         let uid = user.uid;
+            //         let arrayWithInfo = [displayName,email,emailVerified,isAnonymous,uid];
+            //         let $newDiv = document.createElement('div');
+            //         arrayWithInfo.forEach(el => {
+            //             let p = document.createElement('p');
+            //             p.textContent = el;
+            //             $newDiv.appendChild(p);
+            //         });
+            //         document.querySelector("body").appendChild($newDiv);
+            //     } else {
+            //         alert('You are not signed in!');
+            //     }
+            // });
+        }
+    </script>
+</body>
+
+</html>
