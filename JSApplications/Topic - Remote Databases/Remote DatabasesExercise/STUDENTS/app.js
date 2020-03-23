@@ -1,17 +1,18 @@
 (function () {
-    const htmlElements = {
+    const htmlElements = {                          //html elements that I use
         // firstNameField: document.querySelector("body > form > input[type=text]:nth-child(3)"),
         // lastNameField: document.querySelector("body > form > input[type=text]:nth-child(6)"),
         // facNumField: document.querySelector("body > form > input[type=text]:nth-child(9)"),
         // gradeField: document.querySelector("body > form > input[type=text]:nth-child(12)"),
         $tbody: document.querySelector("#results > tbody"),
-        $trowExample: document.querySelector("#results > thead > tr")
+        $trowExample: document.querySelector("#results > thead > tr"),
+        $form: document.querySelector("body > form")
     }
-    const buttons = {
+    const buttons = {                                       //buttons that are always on display
         createButton: document.querySelector("body > form > button"),
         extractButton: document.querySelector("body > form > button:nth-child(15)")
     }
-    buttons.extractButton.addEventListener('click',async (e) => {
+    buttons.extractButton.addEventListener('click',async (e) => {               //extract functionality(show all current students in the database)
         try {
             let response = await fetch('https://softunicourses.firebaseio.com/students.json');
             if (response.status < 400) {
@@ -33,10 +34,10 @@
             console.error(error.statusText);
         }
     });
-    buttons.createButton.addEventListener('click',async (e) => {
-        let allInputFields = Object.values(htmlElements);
-        let checkIfFieldsAreEmpty = allInputFields.every(el => el.value !== '');
-        if (checkIfFieldsAreEmpty) {
+    buttons.createButton.addEventListener('click',async (e) => {            //adding new student to the database
+        let allInputFields = Array.from(htmlElements.$form.children).filter(el => el.tagName === 'INPUT');
+        let checkIfFieldsArentEmpty = allInputFields.every(el => el.value !== '');
+        if (checkIfFieldsArentEmpty) {
             let studentInfo = allInputFields.reduce((acc,el) => {
                 acc[el.name] = el.value;
                 el.value = '';
