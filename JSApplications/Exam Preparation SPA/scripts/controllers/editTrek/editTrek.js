@@ -4,11 +4,11 @@ export async function editTrekHandler() {
     await applyCommon.call(this);
     let trekId = document.location.href.split('/:')[1];
     await this.partial('./templates/editTrek/editTrek.hbs');
-    let newLocationField = document.querySelector("body > form > div:nth-child(1) > input");
-    let newDateField = document.querySelector("body > form > div:nth-child(2) > input");
-    let newDescrField = document.querySelector("body > form > div:nth-child(3) > textarea");
-    let newImageLink = document.querySelector("body > form > div:nth-child(4) > input");
-    let editButton = document.querySelector("body > form > button");
+    let newLocationField = document.querySelector("#main > form > div:nth-child(1) > input")
+    let newDateField = document.querySelector("#main > form > div:nth-child(1) > input");
+    let newDescrField = document.querySelector("#main > form > div:nth-child(1) > input")
+    let newImageLink = document.querySelector("#main > form > div:nth-child(4) > input")
+    let editButton = document.querySelector("#main > form > button");
     editButton.addEventListener('click', async (e) => {
         e.preventDefault();
         let likesBefore = await firebaseRequests.getRequest(`https://softunicourses.firebaseio.com/treks/${trekId}.json?auth=${sessionStorage.getItem('token')}`);
@@ -22,13 +22,19 @@ export async function editTrekHandler() {
                 organizer: sessionStorage.getItem('username'),
                 likes: likesBefore.likes
             }
-            let updateTrek = await firebaseRequests.putRequest(`https://softunicourses.firebaseio.com/treks/${trekId}.json?auth=${sessionStorage.getItem('token')}`,objToSend);
-            let userInfo = await firebaseRequests.getRequest(`https://softunicourses.firebaseio.com/userInfo/${sessionStorage.getItem('userId')}.json?auth=${sessionStorage.getItem('token')}`);
-            let neededTrek = Object.keys(userInfo).find(el => userInfo[el].nameTrek === likesBefore.location);
-            userInfo[neededTrek].nameTrek = newLocationField.value;
-            let obj = userInfo[neededTrek];        
-            await firebaseRequests.patchRequest(`https://softunicourses.firebaseio.com/userInfo/${sessionStorage.getItem('userId')}/${neededTrek}.json?auth=${sessionStorage.getItem('token')}`,obj);
+            let updateTrek = await firebaseRequests.putRequest(`https://softunicourses.firebaseio.com/treks/${trekId}.json?auth=${sessionStorage.getItem('token')}`, objToSend);
             this.redirect(`#/details/:${trekId}`);
+            let updateNot = document.querySelector("#successBox");
+            updateNot.textContent = 'Trek edited successfully.';
+            updateNot.style.display = 'block';
+            updateNot.addEventListener('click', () => {
+                updateNot.textContent = '';
+                updateNot.style.display = 'none';
+            });
+            setTimeout(() => {
+                updateNot.textContent = '';
+                updateNot.style.display = 'none';
+            }, 5000);
         }
     });
 }

@@ -18,7 +18,7 @@ export async function detailsTrekHandler() {
             checkIfUserIsAuthor = {};
         } else {
             checkIfUserIsAuthor = Object.values(checkIfUserIsAuthor);
-            let result = checkIfUserIsAuthor.some(el => el.nameTrek === this.location);
+            let result = checkIfUserIsAuthor.some(el => el.idTrek === trekId);
             if (!result) {
 
             } else {
