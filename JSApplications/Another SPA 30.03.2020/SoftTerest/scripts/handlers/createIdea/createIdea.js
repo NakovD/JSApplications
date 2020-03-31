@@ -26,10 +26,12 @@ export async function createIdeaHandler() {
             createNot.addEventListener('click', () => {
                 createNot.style.display = 'none';
                 this.redirect('#/home');
-            })
+            });
             setTimeout(() => {
-                createNot.style.display = 'none';
-                this.redirect('#/home');
+                if (createNot.style.display !== 'none') {
+                    createNot.style.display = 'none';
+                    this.redirect('#/home');
+                }
             }, 5000);
         }
     })

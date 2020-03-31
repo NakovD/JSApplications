@@ -14,7 +14,9 @@ export async function likeIdeaHandler() {
         this.redirect(`#/details/:${ideaId}`);
     });
     setTimeout(() => {
-        likeNot.style.display = 'none';
-        this.redirect(`#/details/:${ideaId}`);
-    }, 5000)
+        if (likeNot.style.display !== 'none') {
+            likeNot.style.display = 'none';
+            this.redirect(`#/details/:${ideaId}`);
+        }
+    }, 5000);
 }

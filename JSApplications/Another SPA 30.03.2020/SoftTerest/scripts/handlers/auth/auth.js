@@ -43,15 +43,18 @@ export async function registerHandler() {
                     sessionStorage.setItem('userId', firebase.auth().currentUser.uid);
                     sessionStorage.setItem('token', token);
                     sessionStorage.setItem('loggedIn', true);
-                    this.redirect('#/home')
                     let regNot = document.querySelector("#successBox");
                     regNot.textContent = 'Registration successfull!';
                     regNot.style.display = 'block';
                     regNot.addEventListener('click', () => {
                         regNot.style.display = 'none';
+                        this.redirect('#/home')
                     });
                     setTimeout(() => {
-                        regNot.style.display = 'none';
+                        if (regNot.style.display !== 'none') {
+                            regNot.style.display = 'none';
+                            this.redirect('#/home')
+                        }
                     }, 5000)
                 } else {
                     return;
@@ -80,7 +83,7 @@ export async function logInHandler() {
     await this.partial('./templates/loginPage/loginPage.hbs');
     let userNameField = document.querySelector("#inputUsername");
     let passField = document.querySelector("#inputPassword");
-    let logInButton = document.querySelector("#main > div.container.home.wrapper.my-md-5.pl-md-5 > div > form > div:nth-child(4) > button"); 
+    let logInButton = document.querySelector("#main > div.container.home.wrapper.my-md-5.pl-md-5 > div > form > div:nth-child(4) > button");
     logInButton.addEventListener('click', async (e) => {
         e.preventDefault();
         if (userNameField.value !== '' && passField.value !== '') {
@@ -106,7 +109,7 @@ export async function logInHandler() {
                         default:
                     }
                     errorNot.style.display = 'block';
-                    errorNot.addEventListener('click',()=>{
+                    errorNot.addEventListener('click', () => {
                         errorNot.style.display = 'none';
                     })
                 });
@@ -122,7 +125,14 @@ export async function logInHandler() {
                 logInNot.addEventListener('click', () => {
                     logInNot.style.display = 'none';
                     this.redirect('#/home');
-                })
+                    return;
+                });
+                setTimeout(() => {
+                    if (logInNot.style.display !== 'none') {
+                        logInNot.style.display = 'none';
+                        this.redirect('#/home');
+                    }
+                }, 5000);
             }
         } else {
             let errorNot = document.querySelector("#errorBox");
@@ -144,11 +154,11 @@ export async function logOutHandler() {
     logOutSucc.addEventListener('click', () => {
         logOutSucc.style.display = 'none';
         this.redirect('#/home');
-    })
+    });
     setTimeout(() => {
-        logOutSucc.textContent = '';
-        logOutSucc.style.display = 'none';
-        this.redirect('#/home');
+        if (logOutSucc.style.display !== 'none') {
+            logOutSucc.style.display = 'none';
+            this.redirect('#/home');
+        }
     }, 5000)
-
 }

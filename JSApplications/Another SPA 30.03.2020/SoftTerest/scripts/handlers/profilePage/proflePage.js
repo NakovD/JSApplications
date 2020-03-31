@@ -4,6 +4,9 @@ export async function profilePageHandler() {
     await applyCommon.call(this);
     let allIdeas = await firebaseRequests.getRequest(`https://softunicourses.firebaseio.com/ideas.json?auth=${sessionStorage.getItem('token')}`);
     this.username = sessionStorage.getItem('username');
+    if (!allIdeas) {
+        allIdeas = {};
+    }
     let neededIdeas = Object.values(allIdeas).filter(el => el.creator === sessionStorage.getItem('username'));
     this.numIdeas = neededIdeas.length;
     this.currentUserIdeas = neededIdeas;

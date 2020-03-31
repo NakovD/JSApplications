@@ -12,7 +12,9 @@ export async function deleteIdeaHandler() {
         this.redirect('#/home');
     });
     setTimeout(() => {
-        deleteNot.style.display = 'none';
-        this.redirect('#/home');
+        if (deleteNot.style.display !== 'none') {
+            deleteNot.style.display = 'none';
+            this.redirect('#/home');
+        }
     }, 5000);
 }

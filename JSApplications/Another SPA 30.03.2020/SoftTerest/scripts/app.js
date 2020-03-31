@@ -6,7 +6,6 @@ import { createIdeaHandler } from './handlers/createIdea/createIdea.js';
 import { detailsIdeaHandler } from './handlers/detailsIdea/detailsIdea.js';
 import { deleteIdeaHandler } from './handlers/deleteIdea/deleteIdeaHandler.js'
 import { likeIdeaHandler } from './handlers/likeIdea/likeIdea.js';
-// import { commentIdeaHandler } from './handlers/commentIdea/commentIdea.js';
 import { profilePageHandler } from './handlers/profilePage/proflePage.js';
 
 
@@ -23,9 +22,7 @@ var app = Sammy('#main', function () {
     this.get('#/details/:id', detailsIdeaHandler);
     this.get('#/like/:id', likeIdeaHandler);
     this.get('#/delete/:id', deleteIdeaHandler);
-    // this.get('#/comment/:id', commentIdeaHandler);
     this.get('#/profilePage', profilePageHandler);
-    // this.post('#/comment/:id',()=>false);
 });
 
 // start the application

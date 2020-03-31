@@ -7,7 +7,7 @@ export async function detailsIdeaHandler() {
     let neededidea = Object.keys(ideaInfo).find(el => el === ideaId);
     neededidea = ideaInfo[neededidea];
     this.ideaId = ideaId;
-    let {title,description,likes,creator} = neededidea;
+    let { title, description, likes, creator } = neededidea;
     this.title = title;
     if (neededidea.comments) {
         this.comments = neededidea.comments;
@@ -21,26 +21,28 @@ export async function detailsIdeaHandler() {
     this.token = sessionStorage.getItem('token');
     if (neededidea.creator === sessionStorage.getItem('username')) {
         isAuthor = true;
-    }else {
+    } else {
         isAuthor = false;
     }
     this.isAuthor = isAuthor;
     await this.partial('./templates/IdeaDetails/ideaDetails.hbs');
-    let commentButton = document.querySelector("#main > div.container.home.some > form > button");
-    commentButton.addEventListener('click',async (e)=>{
-        e.preventDefault();
-        e.stopPropagation();
-        let textArea = document.querySelector("#comment");
-        if (textArea.value !== '') {
-            let commentInfo = {
-                name: sessionStorage.getItem('username'),
-                comment: textArea.value
+    if (!isAuthor) {
+        let commentButton = document.querySelector("#main > div.container.home.some > form > button");
+        commentButton.addEventListener('click', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            let textArea = document.querySelector("#comment");
+            if (textArea.value !== '') {
+                let commentInfo = {
+                    name: sessionStorage.getItem('username'),
+                    comment: textArea.value
+                }
+                let postRequest = await firebaseRequests.postRequest(`https://softunicourses.firebaseio.com/ideas/${ideaId}/comments.json?auth=${sessionStorage.getItem('token')}`, commentInfo);
+                let liEl = document.createElement('li');
+                liEl.textContent = `${sessionStorage.getItem('username')}: ${textArea.value}`;
+                textArea.value = '';
+                document.querySelector("#main > div.container.home.some > div > ul").appendChild(liEl);
             }
-            debugger;
-            let postRequest = await firebaseRequests.postRequest(`https://softunicourses.firebaseio.com/ideas/${ideaId}/comments.json?auth=${sessionStorage.getItem('token')}`,commentInfo);
-            textArea.value = '';
-            this.redirect(`#/details/:${ideaId}`);
-        }
-    });
-
+        });
+    }
 }
