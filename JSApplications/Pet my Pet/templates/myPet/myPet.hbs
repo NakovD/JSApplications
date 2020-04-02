@@ -1,0 +1,14 @@
+{{> header}}
+{{>notifications}}
+<section class="myPet">
+    <h3>Name: {{name}}</h3>
+    <p>Category: {{type}}</p>
+    <p class="img"><img src="{{imageLink}}"></p>
+    <p class="description">{{description}}</p>
+    <div class="pet-info">
+        <a href="#/editPet/:{{id}}"><button class="button">Edit</button></a>
+        <a href="#/delete/:{{id}}"><button class="button">Delete</button></a>
+        <i class="fas fa-heart"></i> <span>5</span>
+    </div>
+</section>
+{{>footer}}
