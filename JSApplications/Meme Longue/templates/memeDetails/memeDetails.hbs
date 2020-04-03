@@ -1,0 +1,24 @@
+{{>header}}
+{{>notifications}}
+<div class="meme-details">
+    <div class="my-meme-details">
+        <a id="meme-title">{{name}}</a>
+        <img src="{{imageLink}}">
+        <div class="meme-props">
+            <h2>Description</h2>
+            <p class="meme-description">
+                {{description}}
+            </p>
+        </div>
+        <div class="meme-details-buttons">
+            <a class="meme-details-button" href="#/userProfile/:{{creator}}">Created by {{creator}}</a>
+            {{#if isAuthor}}
+            <a href="#/editMeme/:{{id}}" class="meme-details-button">Edit</a>
+            <a href="#/deleteMeme/:{{id}}" class="meme-details-button">Delete</a>
+            {{/if}}
+        </div>
+
+
+    </div>
+</div>
+{{>footer}}

@@ -1,0 +1,31 @@
+{{>header}}
+{{>notifications}}
+<div class="user-profile">
+    <img id="user-avatar-url" src="https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png"
+        alt="user-profile">
+    <h1>{{otherUser}}</h1>
+    <h2>{{otherUserEmail}}</h2>
+    {{#if isAuthor}}
+    <a id="deleteUserButton" href="#/deleteUser">DELETE USER!</a>
+    {{/if}}
+    <p id="user-listings-title">User Memes
+    </p>
+    {{#each memes}}
+    <div class="user-meme-listings">
+        <div class="user-meme">
+            <a href="#/details/:{{id}}" class="user-meme-title">{{name}}</a>
+            <a href="#/details/:{{id}}"> <img class="userProfileImage" src="{{imageLink}}"></a>
+
+            <div class="user-memes-buttons">
+                {{#if isAuthor}}
+                <a href="#/editMeme/:{{id}}" class="user-meme-btn">Edit</a>
+                <a href="#/deleteMeme/:{{id}}" class="user-meme-btn">Delete</a>
+                {{/if}}
+            </div>
+        </div>
+        {{else}}
+        <p class="no-memes">No memes in database.</p>
+        {{/each}}
+    </div>
+</div>
+{{>footer}}
