@@ -1,0 +1,25 @@
+{{>header}}
+{{>notifications}}
+<section id="viewMyFlights">
+    <h3>Your Flights</h3>
+    {{#each flights}}
+    <div class="flight-ticket">
+        <div class="flight-left">
+            <img src="http://airportcluj.ro/fisiere/userfiles/Bari_28.03.07_088.jpg" alt="">
+        </div>
+        <div class="flight-right">
+            <div>
+                <h3>{{destination}}</h3><span>{{departureDate}}</span>
+            </div>
+            <div>
+                from {{origin}} <span>{{departureTime}}</span>
+            </div>
+            <p>{{numSeats}} Seats ({{costPerSeat}}$ per seat) </p>
+            <a href="#/remove/:{{id}}" class="remove">REMOVE</a>
+            <a href="#/details/:{{id}}" class="details">Details</a>
+        </div>
+
+    </div>
+    {{/each}}
+</section>
+{{>footer}}

@@ -1,0 +1,28 @@
+{{>header}}
+{{>notifications}}
+
+
+
+<section id="viewCatalog" class="background-img">
+    {{#if loggedIn}}
+    <a href="#/addFlight" class="add-flight">Add Flight +</a>
+    <div class="added-flights">
+        {{#each flights}}
+        <a href="#/details/:{{id}}" class="added-flight">
+            <img src="http://airportcluj.ro/fisiere/userfiles/Bari_28.03.07_088.jpg" alt=""
+                class="picture-added-flight">
+            <h3>{{destination}}</h3>
+            <span>from {{origin}}</span><span>{{departureDate}} April</span>
+        </a>
+        {{/each}}
+    </div>
+    {{/if}}
+</section>
+
+
+
+
+
+
+
+{{>footer}};

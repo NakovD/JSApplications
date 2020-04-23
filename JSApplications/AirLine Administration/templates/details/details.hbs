@@ -1,0 +1,27 @@
+{{>header}}
+{{>notifications}}
+<section id="viewFlightDetails">
+    <div class="ticket-area">
+        <div class="ticket-area-left">
+            <img src="http://airportcluj.ro/fisiere/userfiles/Bari_28.03.07_088.jpg" alt="">
+        </div>
+        <div class="ticket-area-right">
+            <h3>{{destination}}</h3>
+            <div>from {{origin}}</div>
+            <div class="data-and-time">
+                {{departureDate}} {{departureTime}}
+                {{#if isAuthor}}
+                <a href="#/editFlight/:{{id}}" class="edit-flight-detail"></a>
+                {{/if}}
+            </div>
+            <div>
+                {{numSeats}} Seats ({{costPerSeat}} per seat)
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{{>footer}}
