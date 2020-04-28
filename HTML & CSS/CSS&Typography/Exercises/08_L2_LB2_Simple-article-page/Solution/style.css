@@ -1,0 +1,27 @@
+html {
+    font: 16px/1.5 Verdana, Geneva, sans-serif;
+    background-color: rgb(238, 238, 238);
+    color: rgb(51, 51, 51);
+}
+body,form,table,input,textarea,option,select {
+    font: inherit;
+}
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    padding-bottom: 0.5em;
+    /* padding-top: 0.5em; */
+}
+p {
+    margin: 0;
+    padding-bottom: 0.7em;
+}
+img {
+    padding-bottom: 0.7em;
+}
+ul {
+    margin-top: 0;
+}
+article { 
+    margin: 0;
+    padding: 1em 15em 0 15em
+}
