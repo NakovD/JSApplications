@@ -1,37 +1,80 @@
 html {
-    font: 16px/1.5 "Times New Roman", Times, serif;
+    font: 16px/1.5 Verdana, Geneva, sans-serif;
 }
-body,form,table,input,textarea,option,select {
+body,form,table,input,textarea,option,select,li {
     font: inherit;
 }
 body {
-    padding: 0 5em 0 5em;
-}
-p {
-    font-family: Verdana, Geneva, sans-serif;
-}
-section {
-    border-top-style: groove;
-    border-bottom-style: groove;
+    margin: 5em 5em 5em 5em;
 }
 h1,h2,h3,h4,h5,h6 {
-    font-weight: 400;
+    font-weight: 530;
+    font-family: "Times New Roman", Times, serif;
+}
+p {
+    margin: 0;
+    padding-bottom: 1.5em;
 }
 h1 {
-    font-size: 2em;
+    font-size: 2.2em;
 }
 h2 {
-    font-size: 1.8em;
+    font-size: 2em;
+    margin-bottom: 0.3em;
 }
 h3 {
-    font-size: 1.6em;
+    font-size: 1.8em;
 }
 h4 {
-    font-size: 1.4em;
+    font-size: 1.6em;
 }
 h5 {
-    font-size: 1.2em;
+    font-size: 1.4em;
 }
 h6 {
-    font-size: 1em;
+    font-size: 1.2em;
+}
+ul,ol {
+    margin: 0;
+}
+section.first {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: gray;
+    border-width: 0.1em;
+    padding-top: 1em;
+    padding-bottom: 2em;
+}
+table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    border: 0.1em solid rgb(221,221,221);
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1em;
+}
+thead,th {
+    height: 40px;
+    text-align: left;
+    font-weight: 800;
+    background-color: #bfbfbf;
+    font: bold;
+    padding-left: 0.5em;
+}
+td {
+    height: 40px;
+    font-weight: 500;
+    border: 0.1em solid rgb(221,221,221);
+    padding-left: 0.5em;
+}
+tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+blockquote {
+    border-left-style: solid;
+    border-left-color: rgb(221,221,221);
+    padding-left: 2em;
+}
+div.author {
+    text-align: right;
 }

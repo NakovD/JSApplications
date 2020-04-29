@@ -1,0 +1,36 @@
+html {
+    font: 16px/1.5 Arial, Helvetica, sans-serif;
+}
+body {
+    margin: 0;
+    padding: 7em 10em 10em 10em;
+}
+table {
+    margin: 0;
+    inline-size: 100%;
+    border-collapse: collapse;
+    border: 0.1em solid rgb(221,221,221);
+    width: 100%;
+    table-layout: fixed;
+}
+thead,th {
+    height: 2.2em;
+    text-align: left;
+    background-color: #bfbfbf;
+    font: bold;
+    padding-left: 0.5em;
+}
+td {
+    height: 2.2em;
+    font-weight: 500;
+    border: 0.1em solid rgb(221,221,221);
+    padding-left: 0.5em;
+    border-collapse: collapse;
+}
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+tr:hover {
+    background-color: black;
+    color: white;
+}
