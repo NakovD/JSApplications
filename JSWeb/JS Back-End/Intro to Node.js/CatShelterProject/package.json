@@ -1,0 +1,20 @@
+{
+  "name": "catshelterworkshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
+  },
+  "keywords": [
+    "nodejs",
+    "workshop",
+    "nodejswebserver"
+  ],
+  "author": "David Nakov",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
