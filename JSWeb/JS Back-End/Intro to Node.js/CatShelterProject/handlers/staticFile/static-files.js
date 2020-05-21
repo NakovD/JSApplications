@@ -34,13 +34,11 @@ module.exports = (req,res) => {
                 res.end();
                 return;
             }
-            console.log(pathname);
             res.writeHead(200,{
                 'Content-Type': getContentType(pathname)
             });
             res.write(data);
             res.end();
-
         });
     }else {
 
