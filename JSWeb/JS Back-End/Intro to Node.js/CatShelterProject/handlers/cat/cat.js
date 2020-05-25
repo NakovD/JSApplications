@@ -180,7 +180,38 @@ module.exports = (req, res) => {
             });
         });
     } else if (pathname.includes('/cats-edit') && req.method === 'POST') {
-        console.log('im here');
+        let editForm = new formidable.IncomingForm();
+        const currentCatId = +pathname.split('/cats-edit/')[1];
+        editForm.parse(req, (err, fields, files) => {
+            if (err) {
+                throw (err);
+            }
+            const oldPath = files.file.path;
+            const newPath = path.normalize(path.join(__dirname, '../../content/images/' + files.file.name));
+            fs.rename(oldPath, newPath, () => {
+                console.log('File uploaded successfully!');
+            });
+
+            const catsNormalizedPath = path.normalize(path.join(__dirname, '../../data/cats.json'));
+            fs.readFile(catsNormalizedPath, (err, data) => {
+                if (err) {
+                    throw (err);
+                }
+                const allCats = JSON.parse(data);
+                let neededCat = allCats.find(cat => cat.id === currentCatId);
+                neededCat.name = fields.name;
+                neededCat.description = fields.description;
+                neededCat.breed = fields.breed;
+                neededCat.image = files.file.name;
+                const updatedCats = JSON.stringify(allCats);
+                fs.writeFile(catsNormalizedPath, updatedCats, 'utf-8', () => {
+                });
+            });
+            res.writeHead(301, { location: '/' });
+            res.end();
+
+        });
+
     } else if (pathname.includes('/cats-find-new-home') && req.method === 'POST') {
         let catId = +pathname.split('/cats-find-new-home/')[1];
         let pathToCats = path.normalize(path.join(__dirname, '../../data/cats.json'));
