@@ -1,0 +1,15 @@
+/* this css file is a minumum req for any project */
+
+/* remove all default whitespace */
+* {
+    padding: 0;
+    margin: 0;
+}
+/* Reset CSS Box model */
+html {
+    box-sizing: border-box;
+}
+    
+*, *:before, *:after {
+    box-sizing: inherit;
+}

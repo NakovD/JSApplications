@@ -1,0 +1,77 @@
+.main {
+    width: 90%;
+    height: 100%;
+    margin: 2% auto;
+}
+
+.site-header {
+    width: 70%;
+    display: inline-block;
+}
+
+.site-main {
+    width: 70%;
+    display: inline-block;
+}
+.site-sidebar {
+    width: 29%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.nav {
+    width: 75%;
+    margin: auto;
+}
+
+.nav > ul > li {
+    display: inline-block;
+    margin-left: 3em;    
+}
+.entry {
+    width: 99%;
+    margin-left: 0;
+}
+.entry-content {
+    width: 100%;
+}
+
+.site-footer {
+    padding-top: 3em;
+}
+.site-footer > p {
+    padding-bottom: 0;
+}
+.entry-footer {
+    display: inline-block;
+    width: auto;
+    text-align: right;
+    margin-left: 38.45em;
+    border-left: 4px groove yellow;
+    border-bottom: 4px groove yellow;
+    border-right: 4px ridge teal;
+    margin-bottom: 1.5em;
+}
+a {
+    display: inline-block;
+    padding: 0.6em;
+    border: 2px solid darkblue;
+    border-radius: 12px;
+}
+a:hover {
+    color: darkgray;
+    background-color: darkmagenta;
+}
+
+.entry-content > p {
+    padding-left: 1.6em;
+    padding-top: 1.4em;
+    border-left: 4px groove yellow;
+    border-bottom: 4px groove yellow;
+    border-top: 4px ridge teal;
+    border-right: 4px ridge teal;
+}
+.entry-content > p:hover {
+    color: tomato;
+}
+
